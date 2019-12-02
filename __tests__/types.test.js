@@ -28,6 +28,7 @@ describe('validator module', () => {
       expect(isString({})).toBeFalsy();
       expect(isString(() => {})).toBeFalsy();
       expect(isString(true)).toBeFalsy();
+      expect(isString(undefined)).toBeFalsy();
     });
 
     it('properly tells if a value is a boolean', () => {
@@ -81,10 +82,29 @@ describe('validator module', () => {
       expect(() => castToNumber('hi')).toThrowErrorMatchingSnapshot();
       expect(() => castToNumber({})).toThrowErrorMatchingSnapshot();
     });
+
+    it('can cast values to a String', () => {
+      expect(castToString(3)).toEqual('3');
+      expect(castToString('3')).toEqual('3');
+      expect(castToString(true)).toEqual('true');
+      expect(castToString(false)).toEqual('false');
+      expect(castToString(null)).toEqual('null');
+      expect(castToString({})).toEqual('{}');
+      expect(castToString([])).toEqual('');
+      expect(castToString([1, 2])).toEqual('1,2');
+      expect(castToString(() => {})).toEqual('() => {}');
+    });
+
+    it('throws if value is not castable to string', () => {
+      expect(() => castToString(undefined)).toThrowErrorMatchingSnapshot();
+    });
+
+    
   });
 
   it('can get the right caster', () => {
     expect(getCaster(Number)).toEqual(castToNumber);
+    expect(getCaster(String)).toEqual(castToString);
     expect(getCaster(Promise)).toBeNull();
   });
 });

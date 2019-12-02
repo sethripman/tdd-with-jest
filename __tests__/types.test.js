@@ -2,6 +2,7 @@ const {
   isNumber,
   isString,
   isBoolean,
+  isArray,
   castToNumber,
   getCaster
 } = require('../lib/types.js');
@@ -18,8 +19,8 @@ describe('validator module', () => {
     });
 
     it('properly tells if a value is a string', () => {
-      expect(isString(3)).toBeFalsy();
       expect(isString('hi')).toBeTruthy();
+      expect(isString(3)).toBeFalsy();
       expect(isString([])).toBeFalsy();
       expect(isString({})).toBeFalsy();
       expect(isString(() => {})).toBeFalsy();
@@ -27,23 +28,23 @@ describe('validator module', () => {
     });
 
     it('properly tells if a value is a boolean', () => {
+      expect(isBoolean(true)).toBeTruthy();
+      expect(isBoolean(false)).toBeTruthy();
       expect(isBoolean(3)).toBeFalsy();
       expect(isBoolean('hi')).toBeFalsy();
       expect(isBoolean([])).toBeFalsy();
       expect(isBoolean({})).toBeFalsy();
       expect(isBoolean(() => {})).toBeFalsy();
-      expect(isBoolean(true)).toBeTruthy();
-      expect(isBoolean(false)).toBeTruthy();
     });
 
-    // it('properly tells if a value is an array', () => {
-    //   expect(isNumber(3)).toBeTruthy();
-    //   expect(isNumber('hi')).toBeFalsy();
-    //   expect(isNumber([])).toBeFalsy();
-    //   expect(isNumber({})).toBeFalsy();
-    //   expect(isNumber(() => {})).toBeFalsy();
-    //   expect(isNumber(true)).toBeFalsy();
-    // });
+    it('properly tells if a value is an array', () => {
+      expect(isArray([])).toBeTruthy();
+      expect(isArray(3)).toBeFalsy();
+      expect(isArray('hi')).toBeFalsy();
+      expect(isArray({})).toBeFalsy();
+      expect(isArray(() => {})).toBeFalsy();
+      expect(isArray(true)).toBeFalsy();
+    });
 
     // it('properly tells if a value is a object', () => {
     //   expect(isNumber(3)).toBeTruthy();

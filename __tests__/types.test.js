@@ -6,6 +6,7 @@ const {
   isObject,
   isFunction,
   castToNumber,
+  castToString,
   getCaster
 } = require('../lib/types.js');
 

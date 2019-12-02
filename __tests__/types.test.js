@@ -1,5 +1,7 @@
 const {
   isNumber,
+  isString,
+  isBoolean,
   castToNumber,
   getCaster
 } = require('../lib/types.js');
@@ -14,6 +16,52 @@ describe('validator module', () => {
       expect(isNumber(() => {})).toBeFalsy();
       expect(isNumber(true)).toBeFalsy();
     });
+
+    it('properly tells if a value is a string', () => {
+      expect(isString(3)).toBeFalsy();
+      expect(isString('hi')).toBeTruthy();
+      expect(isString([])).toBeFalsy();
+      expect(isString({})).toBeFalsy();
+      expect(isString(() => {})).toBeFalsy();
+      expect(isString(true)).toBeFalsy();
+    });
+
+    it('properly tells if a value is a boolean', () => {
+      expect(isBoolean(3)).toBeFalsy();
+      expect(isBoolean('hi')).toBeFalsy();
+      expect(isBoolean([])).toBeFalsy();
+      expect(isBoolean({})).toBeFalsy();
+      expect(isBoolean(() => {})).toBeFalsy();
+      expect(isBoolean(true)).toBeTruthy();
+      expect(isBoolean(false)).toBeTruthy();
+    });
+
+    // it('properly tells if a value is an array', () => {
+    //   expect(isNumber(3)).toBeTruthy();
+    //   expect(isNumber('hi')).toBeFalsy();
+    //   expect(isNumber([])).toBeFalsy();
+    //   expect(isNumber({})).toBeFalsy();
+    //   expect(isNumber(() => {})).toBeFalsy();
+    //   expect(isNumber(true)).toBeFalsy();
+    // });
+
+    // it('properly tells if a value is a object', () => {
+    //   expect(isNumber(3)).toBeTruthy();
+    //   expect(isNumber('hi')).toBeFalsy();
+    //   expect(isNumber([])).toBeFalsy();
+    //   expect(isNumber({})).toBeFalsy();
+    //   expect(isNumber(() => {})).toBeFalsy();
+    //   expect(isNumber(true)).toBeFalsy();
+    // });
+
+    // it('properly tells if a value is a function', () => {
+    //   expect(isNumber(3)).toBeTruthy();
+    //   expect(isNumber('hi')).toBeFalsy();
+    //   expect(isNumber([])).toBeFalsy();
+    //   expect(isNumber({})).toBeFalsy();
+    //   expect(isNumber(() => {})).toBeFalsy();
+    //   expect(isNumber(true)).toBeFalsy();
+    // });
   });
 
   describe('casters', () => {

@@ -116,13 +116,27 @@ describe('validator module', () => {
       expect(() => castToBoolean(() => {})).toThrowErrorMatchingSnapshot();
     });
 
+    it('can cast values to an Array', () => {
+      expect(castToArray(3)).toEqual([3]);
+      expect(castToArray('3')).toEqual(['3']);
+      expect(castToArray(true)).toEqual([true]);
+      expect(castToArray(false)).toEqual([false]);
+      expect(castToArray(null)).toEqual([null]);
+      expect(castToArray({})).toEqual([{}]);
+      expect(castToArray([])).toEqual([]);
+    });
 
+    it('throws if value is not castable to Array', () => {
+      expect(() => castToBoolean(undefined)).toThrowErrorMatchingSnapshot();
+      expect(() => castToBoolean(() => {})).toThrowErrorMatchingSnapshot();
+    });
   });
 
   it('can get the right caster', () => {
     expect(getCaster(Number)).toEqual(castToNumber);
     expect(getCaster(String)).toEqual(castToString);
     expect(getCaster(Boolean)).toEqual(castToBoolean);
+    expect(getCaster(Array)).toEqual(castToArray);
     expect(getCaster(Promise)).toBeNull();
   });
 });

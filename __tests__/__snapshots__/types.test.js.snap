@@ -1,8 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`validator module casters throws if value is not castable to Boolean 1`] = `"Cannot cast >>undefined<< to String"`;
+exports[`validator module casters throws if value is not castable to Array 1`] = `"Cannot cast >>undefined<< to Boolean"`;
 
-exports[`validator module casters throws if value is not castable to Boolean 2`] = `"Cannot cast >>() => {}<< to String"`;
+exports[`validator module casters throws if value is not castable to Array 2`] = `"Cannot cast >>() => {}<< to Boolean"`;
+
+exports[`validator module casters throws if value is not castable to Boolean 1`] = `"Cannot cast >>undefined<< to Boolean"`;
+
+exports[`validator module casters throws if value is not castable to Boolean 2`] = `"Cannot cast >>() => {}<< to Boolean"`;
 
 exports[`validator module casters throws if value is not castable to number 1`] = `"Cannot cast >>hi<< to Number"`;
 

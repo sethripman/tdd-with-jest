@@ -8,8 +8,9 @@ const {
   castToNumber,
   castToString,
   castToBoolean,
+  castToArray,
   getCaster
-} = require('../lib/types.js');
+} = require('../lib/types.js'); 
 
 describe('validator module', () => {
   describe('basic validation', () => {
